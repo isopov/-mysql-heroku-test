@@ -16,15 +16,19 @@ public class FooBarController {
 		this.template = template;
 	}
 
+	@RequestMapping("/url")
+	public String url() {
+		return System.getenv("CLEARDB_DATABASE_URL");
+	}
+
 	@RequestMapping("/foo")
 	public void foo(@RequestParam String foo) {
 		template.update("insert into foobar(foobar) values(?)", foo);
 	}
-	
+
 	@RequestMapping()
 	public List<String> list() {
 		return template.queryForList("select foobar from foobar", String.class);
 	}
-	
 
 }
