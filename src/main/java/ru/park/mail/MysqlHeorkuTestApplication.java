@@ -21,10 +21,6 @@ public class MysqlHeorkuTestApplication {
 	public DataSource mainDataSource() throws URISyntaxException {
 		URI dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
 
-		System.out.println(dbUri.getUserInfo().split(":")[0]);
-		System.out.println(dbUri.getUserInfo().split(":")[1]);
-		System.out.println("jdbc:mysql://" + dbUri.getHost() + dbUri.getPath());
-
 		return DataSourceBuilder.create()
 				.username(dbUri.getUserInfo().split(":")[0])
 				.password(dbUri.getUserInfo().split(":")[1])
